@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SEO Audit Tool – Analyze Your Website</title>
+  <meta name="description" content="Run a free SEO audit for your website. Check on-page SEO, technical SEO, content, and backlinks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS (always in head) -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<section class="audit-page page-enter" id="auditPage">
+
+  <div class="audit-card" id="auditCard">
+    <h1>SEO Audit Tool</h1>
+
+    <p class="subtitle">
+      Enter your website URL and get a complete SEO report in seconds.
+    </p>
+
+    <form class="audit-form" id="auditForm" method="POST" action="/result">
+      <input type="url" name="url" placeholder="https://example.com" required>
+      <button type="submit" class="cta-btn">Analyze SEO</button>
+    </form>
+
+    <p class="trust">
+      🔒 No login required · Free forever · Takes ~30 seconds
+    </p>
+  </div>
+
+</section>
+
+<!-- JS (always before closing body) -->
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>
