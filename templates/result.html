@@ -2,92 +2,81 @@
 <html lang="en">
 <head>
   <title>SEO Audit Result</title>
-  <meta name="description" content="View your website SEO audit result with score, issues, and recommendations.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SEO audit result with score, issues, and recommendations">
 
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-<div class="result-page">
+<div class="result-container">
 
   <!-- HEADER -->
-  <div class="result-header">
-    <h1>SEO Audit Result</h1>
-    <p class="analyzed-url">
-      Analyzed Website:
-      <span>https://example.com</span>
-    </p>
+  <div class="result-top">
+    <div class="result-title">
+      <h2 id="siteUrl">https://example.com</h2>
+      <p>Your general SEO Checkup Score</p>
+    </div>
+
+    <button class="download-btn disabled" id="downloadBtn">
+      <span>⬇</span> Download PDF
+    </button>
   </div>
 
-  <!-- SCORE CARD (SPEEDOMETER) -->
-  <div class="score-card">
+  <!-- SCAN STATUS -->
+  <p id="scanStatus" class="scan-status">
+    Initializing SEO scan…
+  </p>
 
-    <div class="speedometer">
+  <!-- SCORE SECTION -->
+  <div class="score-section" id="scoreCard">
+    <div class="score-circle">
+      <span class="score-label">SEO Score</span>
 
-      <svg viewBox="0 0 200 120" class="speedo-svg">
-
-        <!-- Background arc -->
-        <path
-          d="M10 100 A90 90 0 0 1 190 100"
-          class="speedo-bg"
-        />
-
-        <!-- Filled arc -->
-        <path
-          d="M10 100 A90 90 0 0 1 190 100"
-          class="speedo-fill"
-          pathLength="100"
-        />
-
-        <!-- Needle -->
-        <line
-          x1="100" y1="100"
-          x2="100" y2="30"
-          class="needle"
-          id="needle"
-        />
-      </svg>
-
-      <!-- SCORE NUMBER -->
-      <div class="speedo-score">
+      <div class="score-value">
         <span id="scoreValue">0</span>
-        <small>/100</small>
+        <span class="score-total">/100</span>
       </div>
-
-      <p class="score-label">Overall SEO Score</p>
-
     </div>
   </div>
 
-  <!-- ISSUES SECTION -->
-  <div class="result-section">
-    <h2>SEO Issues Found</h2>
-
-    <ul class="issue-list">
-      <li class="bad">❌ Meta description missing</li>
-      <li class="warning">⚠️ Content length is low</li>
-      <li class="good">✅ HTTPS is enabled</li>
-      <li class="warning">⚠️ Missing ALT tags on images</li>
-    </ul>
+  <!-- AVERAGE INFO -->
+  <div class="average-box">
+    Average SEO score of top 100 sites: <b>75%</b>
   </div>
 
-  <!-- RECOMMENDATIONS -->
-  <div class="result-section">
-    <h2>Recommended Actions</h2>
+  <!-- DESCRIPTION -->
+  <p class="score-desc">
+    This webpage received an SEO score of <b>77</b> out of 100, which is higher than the
+    average score of 75. Our analysis has identified <b>11 SEO issues</b> that can be
+    addressed to further enhance your website's performance and improve its
+    search engine visibility.
+  </p>
 
-    <ul class="recommend-list">
-      <li>Add a 150–160 character meta description</li>
-      <li>Write 800+ more words of content</li>
-      <li>Add ALT text to all images</li>
-      <li>Add at least 3 internal links</li>
-    </ul>
-  </div>
+  <!-- PROGRESS BARS -->
+  <div class="progress-group">
 
-  <!-- ACTION BUTTONS -->
-  <div class="result-actions">
-    <a href="/audit" class="cta-btn">Analyze Another Website</a>
-    <a href="/suggestions" class="secondary-btn">View Full SEO Suggestions</a>
+    <div class="progress-item">
+      <label>11 Failed</label>
+      <div class="bar">
+        <div class="fill red" id="failedBar"></div>
+      </div>
+    </div>
+
+    <div class="progress-item">
+      <label>4 Warnings</label>
+      <div class="bar">
+        <div class="fill yellow" id="warningBar"></div>
+      </div>
+    </div>
+
+    <div class="progress-item">
+      <label>46 Passed</label>
+      <div class="bar">
+        <div class="fill green" id="passedBar"></div>
+      </div>
+    </div>
+
   </div>
 
 </div>
@@ -95,3 +84,27 @@
 <script src="/static/js/script.js"></script>
 </body>
 </html>
+<!-- SEO ISSUES -->
+<div class="issues-section" id="issuesSection" style="display:none">
+
+  <h3>SEO Issues Found</h3>
+
+  <!-- ON-PAGE -->
+  <div class="issue-group">
+    <h4>On-Page SEO</h4>
+    <ul class="issues-list" id="onPageIssues"></ul>
+  </div>
+
+  <!-- TECHNICAL -->
+  <div class="issue-group">
+    <h4>Technical SEO</h4>
+    <ul class="issues-list" id="technicalIssues"></ul>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="issue-group">
+    <h4>Content</h4>
+    <ul class="issues-list" id="contentIssues"></ul>
+  </div>
+
+</div>

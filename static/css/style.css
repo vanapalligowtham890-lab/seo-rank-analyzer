@@ -656,3 +656,1311 @@ body {
     font-size: 36px;
   }
 }
+/* ===== RESULT SPEEDOMETER ===== */
+
+.score-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: 70px 20px;
+  margin: 40px 0;
+  background: #020617;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+}
+
+/* Animated background glow */
+.speedometer-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 80%, rgba(56,189,248,0.25), transparent 55%),
+    radial-gradient(circle at 70% 30%, rgba(99,102,241,0.25), transparent 55%);
+  animation: bgMove 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes bgMove {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.speedometer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.speedo-svg {
+  width: 340px;
+  height: 190px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Background arc */
+.speedo-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.2);
+  stroke-width: 14;
+}
+
+/* Active arc */
+.speedo-fill {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  filter: drop-shadow(0 0 18px rgba(56,189,248,0.9));
+}
+
+/* Needle */
+.needle {
+  stroke: #ffffff;
+  stroke-width: 3;
+  transform-origin: 100px 100px;
+}
+
+/* Score number */
+.speedo-score {
+  position: absolute;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 46px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.speedo-score small {
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.score-label {
+  margin-top: 14px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .speedo-svg { width: 260px; }
+  .speedo-score { font-size: 36px; }
+}
+/* ===== SIMPLE SCORE CARD ===== */
+
+.score-card {
+  background: linear-gradient(135deg, #020617, #000);
+  border-radius: 24px;
+  padding: 60px 20px;
+  margin: 40px 0;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+.score-number-big {
+  font-size: 72px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.score-number-big .score-total {
+  font-size: 26px;
+  color: #94a3b8;
+  margin-left: 6px;
+}
+
+.score-text {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+  .score-number-big {
+    font-size: 54px;
+  }
+}
+/* ===============================
+   WOW SCORE BACKGROUND SYSTEM
+   =============================== */
+
+.score-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 80px 20px;
+  margin: 50px 0;
+  background: #020617;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+}
+
+/* Animated gradient layer */
+.score-bg::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at center,
+    var(--glow-color),
+    transparent 60%
+  );
+  animation: bgFloat 10s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+/* Soft moving glow */
+.score-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, var(--glow-soft), transparent 50%),
+    radial-gradient(circle at 70% 70%, var(--glow-soft), transparent 50%);
+  animation: glowMove 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Content above glow */
+.score-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Number animation */
+.score-number-big {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--score-color);
+  animation: popIn 0.8s ease forwards;
+}
+
+.score-total {
+  font-size: 28px;
+  color: #94a3b8;
+  margin-left: 6px;
+}
+
+.score-text {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+/* Animations */
+@keyframes bgFloat {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(8%, -6%); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes glowMove {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .score-number-big {
+    font-size: 56px;
+  }
+}
+/* ===============================
+   RESULT PAGE BACKGROUND SYSTEM
+   =============================== */
+
+.result-theme {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    #f8fafc 0%,
+    #f8fafc 30%,
+    var(--page-bg, #020617) 100%
+  );
+  transition: background 0.8s ease;
+}
+
+/* Content area below score card */
+.result-content {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* Soft background glow after card */
+.result-theme::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 40%;
+  background: radial-gradient(
+    circle at top,
+    var(--page-glow, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: background 0.8s ease;
+}
+/* =========================================
+   RESULT PAGE – ANIMATED BACKGROUND SYSTEM
+   ========================================= */
+
+/* Page wrapper */
+.result-theme {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #f8fafc 0%,
+    #f8fafc 28%,
+    var(--page-bg, #020617) 100%
+  );
+  transition: background 0.8s ease;
+  overflow: hidden;
+}
+
+/* Animated glow after score card */
+.result-theme::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 35%;
+  background: radial-gradient(
+    circle at top center,
+    var(--page-glow, rgba(56,189,248,0.25)),
+    transparent 70%
+  );
+  animation: pageGlowMove 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Subtle motion */
+@keyframes pageGlowMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
+/* =========================================
+   SCORE CARD – WOW ANIMATION
+   ========================================= */
+
+.score-card {
+  position: relative;
+  border-radius: 28px;
+  padding: 80px 20px;
+  margin: 50px 0;
+  background: radial-gradient(
+    circle at top,
+    #020617,
+    #000000
+  );
+  box-shadow: 0 40px 120px rgba(0,0,0,0.75);
+  overflow: hidden;
+}
+
+/* Animated inner glow */
+.score-bg::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle,
+    var(--glow-color, rgba(56,189,248,0.55)),
+    transparent 60%
+  );
+  animation: scoreBgFloat 9s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+/* Soft floating lights */
+.score-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 30%, var(--glow-soft, rgba(56,189,248,0.35)), transparent 55%),
+    radial-gradient(circle at 75% 70%, var(--glow-soft, rgba(56,189,248,0.35)), transparent 55%);
+  animation: scoreGlowMove 7s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes scoreBgFloat {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(10%, -8%); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes scoreGlowMove {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Content above glow */
+.score-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Animated score number */
+.score-number-big {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--score-color, #38bdf8);
+  animation: scorePop 0.8s ease forwards;
+}
+
+.score-total {
+  font-size: 28px;
+  color: #94a3b8;
+  margin-left: 6px;
+}
+
+.score-text {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+@keyframes scorePop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   RESULT CONTENT SECTION
+   ========================================= */
+
+.result-content {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 90px;
+  z-index: 1;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .score-number-big {
+    font-size: 56px;
+  }
+
+  .score-card {
+    padding: 60px 16px;
+  }
+}
+/* ===============================
+   WOW SCORE TEXT ANIMATION
+   =============================== */
+
+.score-number-big {
+  position: relative;
+  animation: scoreFloat 3s ease-in-out infinite;
+  text-shadow:
+    0 0 20px rgba(56,189,248,0.6),
+    0 0 40px rgba(56,189,248,0.4);
+}
+
+@keyframes scoreFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Pop-in on load */
+.score-number-big {
+  animation:
+    scorePopIn 0.8s ease forwards,
+    scoreFloat 3s ease-in-out infinite;
+}
+
+@keyframes scorePopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ===============================
+   DYNAMIC CARD BACKGROUND
+   =============================== */
+
+.score-card {
+  background:
+    linear-gradient(
+      120deg,
+      #020617,
+      #06283d,
+      #020617
+    );
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.score-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.08),
+    transparent 70%
+  );
+  animation: lightSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* ===============================
+   WOW SCORE TEXT ANIMATION
+   =============================== */
+
+.score-number-big {
+  position: relative;
+  animation: scoreFloat 3s ease-in-out infinite;
+  text-shadow:
+    0 0 20px rgba(56,189,248,0.6),
+    0 0 40px rgba(56,189,248,0.4);
+}
+
+@keyframes scoreFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Pop-in on load */
+.score-number-big {
+  animation:
+    scorePopIn 0.8s ease forwards,
+    scoreFloat 3s ease-in-out infinite;
+}
+
+@keyframes scorePopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ===============================
+   DYNAMIC CARD BACKGROUND
+   =============================== */
+
+.score-card {
+  background:
+    linear-gradient(
+      120deg,
+      #020617,
+      #06283d,
+      #020617
+    );
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.score-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.08),
+    transparent 70%
+  );
+  animation: lightSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* =========================================================
+   FULL RESULT PAGE – WOW ANIMATION SYSTEM
+   ========================================================= */
+
+/* -------- GLOBAL PAGE MOTION -------- */
+.result-theme {
+  position: relative;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    120deg,
+    #f8fafc,
+    #e6f0f6,
+    #020617,
+    #020617
+  );
+  background-size: 500% 500%;
+  animation: pageGradientFlow 20s ease infinite;
+
+  overflow: hidden;
+}
+
+/* Moving gradient */
+@keyframes pageGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------- FLOATING LIGHT WAVES -------- */
+.result-theme::before,
+.result-theme::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.result-theme::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(56,189,248,0.35),
+    transparent 60%
+  );
+  animation: lightDrift1 14s ease-in-out infinite;
+}
+
+.result-theme::after {
+  background: radial-gradient(
+    circle at 70% 70%,
+    rgba(99,102,241,0.30),
+    transparent 65%
+  );
+  animation: lightDrift2 18s ease-in-out infinite;
+}
+
+@keyframes lightDrift1 {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(60px,-40px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes lightDrift2 {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-70px,50px); }
+  100% { transform: translate(0,0); }
+}
+
+/* Keep content above background */
+.result-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* -------- HEADER ENTRANCE -------- */
+.result-header {
+  animation: slideFadeDown 1s ease forwards;
+}
+
+@keyframes slideFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------- SCORE CARD WOW -------- */
+.score-card {
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #06283d,
+    #020617
+  );
+  background-size: 300% 300%;
+  animation: cardGradientMove 10s ease infinite;
+
+  border-radius: 30px;
+  box-shadow: 0 50px 140px rgba(0,0,0,0.8);
+
+  animation-delay: 0.3s;
+}
+
+@keyframes cardGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------- SCORE NUMBER WOW -------- */
+.score-number-big {
+  position: relative;
+  font-size: 82px;
+  font-weight: 800;
+  color: #38bdf8;
+
+  animation:
+    scorePop 0.8s ease forwards,
+    scoreFloat 3.5s ease-in-out infinite;
+
+  text-shadow:
+    0 0 25px rgba(56,189,248,0.8),
+    0 0 50px rgba(56,189,248,0.5);
+}
+
+@keyframes scorePop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scoreFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* -------- SECTIONS ENTRANCE -------- */
+.result-section {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------- BUTTONS -------- */
+.result-actions a {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-actions a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* -------- MOBILE TUNING -------- */
+@media (max-width: 600px) {
+  .score-number-big {
+    font-size: 56px;
+  }
+}
+/* ===== RESULT PAGE CLEAN UI ===== */
+
+body {
+  background: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111827;
+}
+
+.result-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+
+.result-top h2 {
+  margin: 0;
+}
+
+.download-btn {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Score */
+.score-section {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.score-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 14px solid #22c55e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle span {
+  display: block;
+}
+
+.score-circle #scoreValue {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.score-label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Average */
+.average-box {
+  background: #f9fafb;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Description */
+.score-desc {
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* Progress bars */
+.progress-group {
+  margin-top: 30px;
+}
+
+.progress-item {
+  margin-bottom: 18px;
+}
+
+.progress-item label {
+  font-weight: 600;
+}
+
+.bar {
+  background: #e5e7eb;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.fill.red { background: #ef4444; }
+.fill.yellow { background: #f59e0b; }
+.fill.green { background: #22c55e; }
+.fill {
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  transition: width 1s ease-in-out;
+}
+.fill {
+  width: 0;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#scoreValue {
+  transition: color 0.4s ease;
+  text-shadow: 0 0 18px rgba(34,197,94,0.35);
+}
+.scan-status {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Issue rows animation */
+.progress-item {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: rowReveal 0.6s ease forwards;
+}
+
+.progress-item:nth-child(1) { animation-delay: 0.8s; }
+.progress-item:nth-child(2) { animation-delay: 1.3s; }
+.progress-item:nth-child(3) { animation-delay: 1.8s; }
+
+@keyframes rowReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.score-circle {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fill {
+  width: 0;
+  height: 100%;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#scoreCard {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+/* ===== RESULT PAGE LAYOUT LOCK ===== */
+
+.result-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.score-and-summary {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .score-and-summary {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* Score circle stays stable */
+.score-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 14px solid #22c55e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Progress bars stay aligned */
+.progress-group {
+  margin-top: 30px;
+}
+
+.progress-item {
+  margin-bottom: 18px;
+}
+/* ===============================
+   RESULT PAGE – PROGRESS BARS
+   =============================== */
+
+.fill {
+  width: 0;
+  height: 100%;
+  background-color: currentColor;
+  border-radius: 8px;
+  transition: width 1.2s ease;
+}
+
+/* Optional colors */
+.fill.red {
+  background-color: #ef4444;
+}
+
+.fill.yellow {
+  background-color: #facc15;
+}
+
+.fill.green {
+  background-color: #22c55e;
+}
+.download-btn {
+  color: var(--score-color, #2563eb);
+  border: 1px solid var(--score-color, #2563eb);
+  background: transparent;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: var(--score-color, #2563eb);
+  color: #fff;
+}
+.download-btn {
+  color: #111827;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+}
+/* ===============================
+   DOWNLOAD PDF BUTTON – PRO STYLE
+   =============================== */
+
+.download-btn {
+  --btn-color: var(--score-color, #2563eb);
+
+  color: var(--btn-color);
+  background: transparent;
+  border: 1.5px solid var(--btn-color);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.download-btn:hover:not(.disabled) {
+  background: var(--btn-color);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Disabled while scan running */
+.download-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon animation */
+.download-btn span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.download-btn:hover span {
+  transform: translateY(2px);
+}
+/* ===============================
+   RESULT PAGE LAYOUT FIX
+   =============================== */
+
+.result-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Top header row */
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Score + content layout */
+.score-section {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 20px;
+}
+
+/* Keep score circle centered */
+.score-circle {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 14px solid var(--score-color, #22c55e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Score text */
+.score-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+#scoreValue {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.score-total {
+  font-size: 20px;
+  color: #9ca3af;
+}
+
+/* Average box */
+.average-box {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* Description text */
+.score-desc {
+  max-width: 700px;
+  margin: 20px auto 30px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Progress bars section */
+.progress-group {
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.progress-item {
+  margin-bottom: 16px;
+}
+
+.bar {
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 14px;
+}
+/* ===============================
+   SEO ISSUES SECTION
+   =============================== */
+
+.issues-section {
+  max-width: 700px;
+  margin: 40px auto 60px;
+}
+
+.issues-section h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.issues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.issue {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+
+  font-size: 15px;
+  opacity: 0;
+  transform: translateY(8px);
+
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.issue .icon {
+  font-size: 18px;
+}
+
+/* Status colors */
+.issue.bad {
+  border-left: 4px solid #ef4444;
+}
+
+.issue.warning {
+  border-left: 4px solid #facc15;
+}
+
+.issue.good {
+  border-left: 4px solid #22c55e;
+}
+
+/* Stagger animation */
+.issue:nth-child(1) { animation-delay: 0.2s; }
+.issue:nth-child(2) { animation-delay: 0.4s; }
+.issue:nth-child(3) { animation-delay: 0.6s; }
+.issue:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   SEO ISSUES – PRO UI
+   =============================== */
+
+.issues-section {
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+.issue-group {
+  margin-bottom: 28px;
+}
+
+.issue-group h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.issues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.issue {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.45s ease forwards;
+}
+
+.issue-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.issue-desc {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Severity */
+.issue.bad { border-left: 4px solid #ef4444; }
+.issue.warning { border-left: 4px solid #facc15; }
+.issue.good { border-left: 4px solid #22c55e; }
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
