@@ -31,3 +31,81 @@ form.addEventListener("submit", function (e) {
     form.submit();
   }, 500);
 });
+const targetScore = 78; // demo value (later from backend)
+
+const scoreEl = document.getElementById("scoreValue");
+const needle = document.getElementById("needle");
+const arc = document.querySelector(".speedo-fill");
+
+/* Count number */
+let current = 0;
+const counter = setInterval(() => {
+  if (current >= targetScore) {
+    clearInterval(counter);
+  } else {
+    current++;
+    scoreEl.textContent = current;
+  }
+}, 25);
+
+/* Animate needle */
+const needleAngle = -90 + targetScore * 1.8;
+needle.style.transform = `rotate(${needleAngle}deg)`;
+
+/* Animate arc */
+arc.style.strokeDashoffset = 100 - targetScore;
+
+/* Change color based on score */
+if (targetScore < 40) {
+  arc.style.stroke = "#ef4444";
+} else if (targetScore < 70) {
+  arc.style.stroke = "#facc15";
+} else {
+  arc.style.stroke = "#38bdf8";
+}
+document.addEventListener("DOMContentLoaded", () => {
+
+  // DEMO SCORE (later from backend)
+  const targetScore = 78;
+
+  const scoreEl = document.getElementById("scoreValue");
+  const needle = document.getElementById("needle");
+  const arc = document.querySelector(".speedo-fill");
+
+  // Safety check
+  if (!scoreEl || !needle || !arc) {
+    console.warn("Speedometer elements not found");
+    return;
+  }
+
+  /* ===== Number Counter ===== */
+  let current = 0;
+  const counter = setInterval(() => {
+    if (current >= targetScore) {
+      clearInterval(counter);
+    } else {
+      current++;
+      scoreEl.textContent = current;
+    }
+  }, 25);
+
+  /* ===== Arc Animation ===== */
+  arc.style.strokeDashoffset = 100 - targetScore;
+
+  /* ===== Needle Rotation ===== */
+  const angle = -90 + targetScore * 1.8; // -90° to +90°
+  needle.style.transform = `rotate(${angle}deg)`;
+
+  /* ===== Color Logic ===== */
+  if (targetScore < 40) {
+    arc.style.stroke = "#ef4444"; // red
+    scoreEl.style.color = "#ef4444";
+  } else if (targetScore < 70) {
+    arc.style.stroke = "#facc15"; // yellow
+    scoreEl.style.color = "#facc15";
+  } else {
+    arc.style.stroke = "#38bdf8"; // blue
+    scoreEl.style.color = "#38bdf8";
+  }
+
+});

@@ -1,1 +1,97 @@
-<h1>SEO Score: 78/100</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SEO Audit Result</title>
+  <meta name="description" content="View your website SEO audit result with score, issues, and recommendations.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="result-page">
+
+  <!-- HEADER -->
+  <div class="result-header">
+    <h1>SEO Audit Result</h1>
+    <p class="analyzed-url">
+      Analyzed Website:
+      <span>https://example.com</span>
+    </p>
+  </div>
+
+  <!-- SCORE CARD (SPEEDOMETER) -->
+  <div class="score-card">
+
+    <div class="speedometer">
+
+      <svg viewBox="0 0 200 120" class="speedo-svg">
+
+        <!-- Background arc -->
+        <path
+          d="M10 100 A90 90 0 0 1 190 100"
+          class="speedo-bg"
+        />
+
+        <!-- Filled arc -->
+        <path
+          d="M10 100 A90 90 0 0 1 190 100"
+          class="speedo-fill"
+          pathLength="100"
+        />
+
+        <!-- Needle -->
+        <line
+          x1="100" y1="100"
+          x2="100" y2="30"
+          class="needle"
+          id="needle"
+        />
+      </svg>
+
+      <!-- SCORE NUMBER -->
+      <div class="speedo-score">
+        <span id="scoreValue">0</span>
+        <small>/100</small>
+      </div>
+
+      <p class="score-label">Overall SEO Score</p>
+
+    </div>
+  </div>
+
+  <!-- ISSUES SECTION -->
+  <div class="result-section">
+    <h2>SEO Issues Found</h2>
+
+    <ul class="issue-list">
+      <li class="bad">❌ Meta description missing</li>
+      <li class="warning">⚠️ Content length is low</li>
+      <li class="good">✅ HTTPS is enabled</li>
+      <li class="warning">⚠️ Missing ALT tags on images</li>
+    </ul>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="result-section">
+    <h2>Recommended Actions</h2>
+
+    <ul class="recommend-list">
+      <li>Add a 150–160 character meta description</li>
+      <li>Write 800+ more words of content</li>
+      <li>Add ALT text to all images</li>
+      <li>Add at least 3 internal links</li>
+    </ul>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="result-actions">
+    <a href="/audit" class="cta-btn">Analyze Another Website</a>
+    <a href="/suggestions" class="secondary-btn">View Full SEO Suggestions</a>
+  </div>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
