@@ -29,16 +29,49 @@
     Initializing SEO scan…
   </p>
 
-  <!-- SCORE SECTION -->
-  <div class="score-section" id="scoreCard">
-    <div class="score-circle">
+<!-- SCORE SECTION -->
+<div class="score-section" id="scoreCard">
+
+  <div class="score-circle">
+
+    <!-- CIRCULAR PROGRESS SVG -->
+    <svg class="progress-ring" width="180" height="160">
+
+      <!-- BACKGROUND CIRCLE -->
+      <circle
+        class="progress-ring-bg"
+        r="80"
+        cx="80"
+        cy="80"
+        fill="transparent"
+        stroke="#e5e7eb"
+        stroke-width="10"
+      />
+
+      <!-- PROGRESS CIRCLE -->
+      <circle
+        class="progress-ring-fill"
+        r="80"
+        cx="90"
+        cy="90"
+        fill="transparent"
+        stroke="#22c55e"
+        stroke-width="10"
+        stroke-linecap="round"
+      />
+
+    </svg>
+
+    <!-- CENTER TEXT -->
+    <div class="score-center">
       <span class="score-label">SEO Score</span>
-      <div class="score-value">
-        <span id="scoreValue">0</span>
-        <span class="score-total">/100</span>
-      </div>
+      <span class="score-number" id="scoreValue">0</span>
+      <span class="score-total">/100</span>
     </div>
+
   </div>
+
+</div>
 
   <!-- AVERAGE INFO (OPTIONAL STATIC TEXT) -->
   <div class="average-box">

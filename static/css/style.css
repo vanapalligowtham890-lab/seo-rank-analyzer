@@ -1964,3 +1964,537 @@ body {
     transform: translateY(0);
   }
 }
+/* ===============================
+   WOW DOWNLOAD PDF BUTTON
+   =============================== */
+
+.download-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn:not(.disabled):hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(59,130,246,0.35);
+}
+
+/* Pulse while generating */
+.download-btn.downloading {
+  animation: pulseGlow 1.2s infinite;
+  pointer-events: none;
+}
+
+/* Success state */
+.download-btn.success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(34,197,94,0.6);
+}
+
+/* Icon animation */
+.download-btn span {
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.3s ease;
+}
+
+.download-btn.downloading span {
+  animation: bounceIcon 0.8s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59,130,246,0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(59,130,246,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59,130,246,0);
+  }
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+/* ===============================
+   RESULT PAGE ENTRY ANIMATION
+   =============================== */
+
+.result-container {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: pageEnter 0.8s ease forwards;
+}
+
+@keyframes pageEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   SCORE CARD ANIMATION
+   =============================== */
+
+.score-section {
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scorePop 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes scorePop {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.score-circle {
+  box-shadow: 0 0 0 rgba(34,197,94,0.0);
+  transition: box-shadow 0.4s ease;
+}
+
+.score-section.active .score-circle {
+  box-shadow: 0 0 25px rgba(34,197,94,0.35);
+}
+.score-section {
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scorePop 0.6s ease forwards;
+}
+
+.score-section.active {
+  opacity: 1;
+}
+
+@keyframes scorePop {
+  to {
+    transform: scale(1);
+  }
+}
+
+.fill {
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+.issue {
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: issueSlide 0.5s ease forwards;
+}
+
+@keyframes issueSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* ===============================
+   CIRCULAR SEO SCORE PROGRESS
+   =============================== */
+
+.score-circle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: auto;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  opacity: 0.3;
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transition: stroke-dashoffset 1.4s ease, stroke 0.4s ease;
+}
+
+.score-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-number {
+  font-size: 38px;
+  font-weight: bold;
+}
+/* ===============================
+   FIXED CIRCULAR SEO SCORE
+   =============================== */
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 439.82; /* 2 * π * 70 */
+  stroke-dashoffset: 439.82;
+  transition: stroke-dashoffset 1.4s ease, stroke 0.3s ease;
+}
+
+.progress-ring-bg {
+  opacity: 0.25;
+}
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  opacity: 0.25;
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 439.82;
+  stroke-dashoffset: 439.82;
+  transition: stroke-dashoffset 1.4s ease, stroke 0.3s ease;
+}
+/* ===============================
+   FORCE FIX – REMOVE DOUBLE CIRCLE
+   =============================== */
+
+.progress-ring-fill {
+  stroke-dasharray: 439.82 !important;
+  stroke-dashoffset: 439.82 !important;
+}
+
+.progress-ring-bg {
+  stroke: #e5e7eb !important;
+}
+/* ===============================
+   CIRCULAR SCORE (TESTBOOK STYLE)
+   =============================== */
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  stroke: #eeeeee;
+  opacity: 1;
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 439.82; /* 2π × 70 */
+  stroke-dashoffset: 439.82;
+  transition: stroke-dashoffset 1.4s ease;
+  stroke-linecap: round;
+}
+
+/* ===============================
+   PROGRESS BARS ANIMATION
+   =============================== */
+
+.fill {
+  width: 0;
+  transition: width 1.2s ease;
+}
+/* ==================================================
+   FINAL HARD FIX — PREVENT SVG CIRCLE OVERLAP
+   ================================================== */
+
+/* Rotate ONLY the SVG container */
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+/* Background circle: NEVER animate */
+.progress-ring-bg {
+  stroke: #e5e7eb !important;
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ==================================================
+   HARD FIX — REMOVE CSS-BASED CIRCLES COMPLETELY
+   ================================================== */
+
+/* Remove any old donut / ring styles */
+.score-circle {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Kill pseudo-elements creating extra rings */
+.score-circle::before,
+.score-circle::after {
+  content: none !important;
+  display: none !important;
+}
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  stroke: #22c55e !important;
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 539.82;
+  stroke-dashoffset: 539.82;
+  transition: stroke-dashoffset 1.4s ease;
+}
+/* ===============================
+   FINAL CIRCULAR PROGRESS CSS
+   =============================== */
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  stroke: #e5e7eb;
+}
+
+.progress-ring-fill {
+  stroke-dasharray: 539.82;   /* 2π × 80 */
+  stroke-dashoffset: 539.82;  /* start empty */
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.4s ease, stroke 0.3s ease;
+}
+.score-circle {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  margin: auto;
+}
+/* ===============================
+   MODERN DONUT SCORE (IMG-2 STYLE)
+   =============================== */
+
+.score-circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 30px auto;
+}
+
+.donut {
+  transform: rotate(-90deg);
+}
+
+.donut-bg {
+  fill: none;
+  stroke: #e6ebf0;
+  stroke-width: 14;
+}
+
+.donut-fill {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 534; /* 2π × 85 */
+  stroke-dashoffset: 534;
+  transition: stroke-dashoffset 1.6s ease, stroke 0.4s ease;
+}
+
+.score-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.score-title {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.score-main {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.score-total {
+  font-size: 18px;
+  color: #9ca3af;
+  margin-left: 2px;
+}
+/* =========================================
+   FORCE SHOW DONUT SCORE (DEBUG + FIX)
+   ========================================= */
+
+.score-section {
+  display: block !important;
+}
+
+.score-circle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 200px !important;
+  height: 200px !important;
+  margin: 30px auto !important;
+  position: relative !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+}
+
+.score-circle svg {
+  display: block !important;
+  width: 200px !important;
+  height: 200px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* =========================================
+   FORCE SHOW SCORE DONUT (FINAL FIX)
+   ========================================= */
+
+.score-section {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 40px 0 !important;
+}
+
+.score-circle {
+  display: block !important;
+  width: 200px !important;
+  height: 200px !important;
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.score-circle svg {
+  display: block !important;
+  width: 200px !important;
+  height: 200px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.score-center {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 2 !important;
+}
+.score-wrapper {
+  position: relative;
+  width: 220px;
+  margin: 40px auto;
+}
+
+.score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+.donut-wrapper {
+  position: relative;
+  width: 220px;
+  margin: 40px auto;
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-score {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.bar {
+  background: #e5e7eb;
+  height: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  transition: width 1.2s ease;
+}
+
+.red { background: #ef4444; }
+.yellow { background: #f59e0b; }
+.green { background: #22c55e; }
+
+.download-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* === FORCE DONUT VISIBILITY === */
+
+.score-section {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 40px 0 !important;
+}
+
+.donut-wrapper {
+  position: relative !important;
+  width: 220px !important;
+  height: 220px !important;
+}
+
+.donut-svg {
+  width: 220px !important;
+  height: 220px !important;
+  display: block !important;
+}
+
+.donut-bg {
+  fill: none !important;
+  stroke: #e5e7eb !important;
+  stroke-width: 14 !important;
+}
+
+.donut-fill {
+  fill: none !important;
+  stroke: #22c55e !important;
+  stroke-width: 14 !important;
+  stroke-linecap: round !important;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.donut-center {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none;
+}
